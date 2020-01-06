@@ -16,6 +16,7 @@ export default class Project extends Component {
             tempt_projects: [],
             term: "",
             projects: [],
+            projectName: "",
             keyword: "",
             technology: [],
             projectID: "",
@@ -87,16 +88,16 @@ export default class Project extends Component {
     handleFilterByProjectID(filter) {
         if (filter === 'asc') {
             let asc = this.state.projects.sort(function (a, b) {
-                var textA = a.projectID.toUpperCase();
-                var textB = b.projectID.toUpperCase();
+                var textA = a.projectName.toUpperCase();
+                var textB = b.projectName.toUpperCase();
                 return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
             });
             this.setState({ currentDisplay: asc });
         }
         else if (filter === 'des') {
             let des = this.state.projects.sort(function (a, b) {
-                var textA = a.projectID.toUpperCase();
-                var textB = b.projectID.toUpperCase();
+                var textA = a.projectName.toUpperCase();
+                var textB = b.projectName.toUpperCase();
                 return (textA > textB) ? -1 : (textA < textB) ? 1 : 0;
             });
             this.setState({ currentDisplay: des });
@@ -208,7 +209,7 @@ export default class Project extends Component {
                                         <div className="card-deck">
                                             <div className="card mb-3" style={{ width: 12 + 'rem', height: 15 + 'rem' }}>
                                                 <div className="card-body">
-                                                    <h5 className="card-title">{s.projectID}</h5>
+                                                    <h5 className="card-title">{s.projectID}: {s.projectName}</h5>
                                                     <h6 className="card-subtitle mb-2 text-muted">{s.course.map(s => s.courseName)}</h6>
                                                     <div className="card-text" style={{ height: 5 + 'rem' }}>
                                                         {s.description} <br /> <br />
