@@ -4,11 +4,6 @@ const url = 'http://13.229.31.156/projects/'
 const url1 = 'http://13.229.31.156/'
 // const url = 'http://localhost:9000/projects/'
 // const url1 = 'http://localhost:9000/'
-
-// test push
-// second test
-// third test
-// 11223
 function searchingFor(term) {
     return function (x) {
         return x.projectID.includes(term) || !term;
@@ -118,7 +113,6 @@ export default class NewProject extends Component {
                 });
         } else {
             var bodyFormData = new FormData();
-            bodyFormData.append('_id', this.state._id)
             bodyFormData.append('technology', this.state.technology)
             bodyFormData.append('projectID', this.state.projectID)
             bodyFormData.append('projectName', this.state.projectName)
@@ -163,16 +157,16 @@ export default class NewProject extends Component {
         }
     }
 
-    add(technology, projectID, courseName, semester, studentID, studentName, course, studentYear, assignmentName, assignmentDescription, assignmentPercentage, scope, description, industryLink, application, courseID, assignment, student, projectImage) {
+    add(technology, projectID, projectName, courseName, semester, studentID, studentName, course, studentYear, assignmentName, assignmentDescription, assignmentPercentage, scope, description, industryLink, application, courseID, assignment, student, projectImage) {
         this.setState({
             technology: [], projectID: '', projectName: '', semester: '', student: [{ studentID: '', studentName: '', studentYear: '' }], course: [{ courseID: '', courseName: '' }], assignment: [{ assignmentName: '', assignmentDescription: '', assignmentPercentage: '' }],
             scope: '', description: '', industryLink: '', application: '', projectImage: '', addNew: true
         })
     }
 
-    edit(_id, technology, projectID, projectName, semester, student, course, assignment, scope, description, industryLink, application) {
+    edit(technology, projectID, projectName, semester, student, course, assignment, scope, description, industryLink, application) {
         this.setState({
-            _id: _id, technology: technology, projectID: projectID, projectName: projectName, semester: semester, student: student, course: course, assignment: assignment,
+            technology: technology, projectID: projectID, projectName: projectName, semester: semester, student: student, course: course, assignment: assignment,
             scope: scope, description: description, industryLink: industryLink, application: application, addNew: false
         })
     }
