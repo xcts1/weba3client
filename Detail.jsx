@@ -83,7 +83,7 @@ export default class Detail extends Component {
                                                         <div>
                                                             <div className="row">
                                                                 <div className="column">
-                                                                    <img src={url1.concat(s)} className="img-thumbnail hover-shadow" onclick="openModal();currentSlide(1)"></img>
+                                                                    <img src={url1.concat(s)} className="img-thumbnail hover-shadow" onClick="openModal();currentSlide(1)"></img>
                                                                 </div>
                                                             </div>
                                                             {/* <div class="photo-gallery">

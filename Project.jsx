@@ -44,7 +44,7 @@ export default class Project extends Component {
             .then(json => this.setState({ projects: json, tempt_projects: json }))
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.fetchData()
     }
 

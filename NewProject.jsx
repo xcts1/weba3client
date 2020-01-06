@@ -151,7 +151,7 @@ export default class NewProject extends Component {
 
     delete(id) {
         console.log(url + id)
-        if (confirm('Do you want to delete project with id ' + id + '?')) {
+        if (confirm('Do you want to delete this project?')) {
             fetch(url + id, {
                 method: 'delete',
             }).then(res => res.json())
