@@ -118,6 +118,7 @@ export default class NewProject extends Component {
                 });
         } else {
             var bodyFormData = new FormData();
+            bodyFormData.append('_id', this.state._id)
             bodyFormData.append('technology', this.state.technology)
             bodyFormData.append('projectID', this.state.projectID)
             bodyFormData.append('projectName', this.state.projectName)
@@ -169,9 +170,9 @@ export default class NewProject extends Component {
         })
     }
 
-    edit(technology, projectID, semester, student, course, assignment, scope, description, industryLink, application) {
+    edit(_id, technology, projectID, projectName, semester, student, course, assignment, scope, description, industryLink, application) {
         this.setState({
-            technology: technology, projectID: projectID, semester: semester, student: student, course: course, assignment: assignment,
+            _id: _id, technology: technology, projectID: projectID, projectName: projectName, semester: semester, student: student, course: course, assignment: assignment,
             scope: scope, description: description, industryLink: industryLink, application: application, addNew: false
         })
     }
