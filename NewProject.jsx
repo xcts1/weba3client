@@ -14,7 +14,7 @@ export default class NewProject extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            _id: "",
+            _id: null,
             projects: [],
             technology: [],
             term: "",
@@ -113,6 +113,7 @@ export default class NewProject extends Component {
                 });
         } else {
             var bodyFormData = new FormData();
+            bodyFormData.append('_id', this.state._id)
             bodyFormData.append('technology', this.state.technology)
             bodyFormData.append('projectID', this.state.projectID)
             bodyFormData.append('projectName', this.state.projectName)
@@ -127,6 +128,7 @@ export default class NewProject extends Component {
             for (const key of Object.keys(this.state.selectedFile)) {
                 bodyFormData.append('projectImage', this.state.selectedFile[key], this.state.selectedFile[key].name)
             }
+            console.log(bodyFormData)
             axios({
                 method: 'put',
                 url: url,
@@ -164,11 +166,12 @@ export default class NewProject extends Component {
         })
     }
 
-    edit(technology, projectID, projectName, semester, student, course, assignment, scope, description, industryLink, application) {
+    edit(_id, technology, projectID, projectName, semester, student, course, assignment, scope, description, industryLink, application) {
         this.setState({
-            technology: technology, projectID: projectID, projectName: projectName, semester: semester, student: student, course: course, assignment: assignment,
+            _id: _id, technology: technology, projectID: projectID, projectName: projectName, semester: semester, student: student, course: course, assignment: assignment,
             scope: scope, description: description, industryLink: industryLink, application: application, addNew: false
         })
+        console.log()
     }
 
     deleteStudent(e, index) {
@@ -389,6 +392,7 @@ export default class NewProject extends Component {
                                         <label htmlFor="application">Application</label>
                                         <textarea type="text" className="form-control" id="application" name='application' value={this.state.application} placeholder="Enter Application" onChange={this.handleChange.bind(this)} required />
                                     </div>
+
                                     <input type="file" name="file" onChange={this.fileSelectedHandler.bind(this)} multiple />
                                 </form>
                                 <br />
@@ -412,7 +416,7 @@ export default class NewProject extends Component {
                                                         <h6 className="card-subtitle mb-2 text-muted">{s.course.map(s => s.courseName)}</h6>
                                                         <p className="card-text">{s.description}</p>
                                                         <button className="btn btn-danger" onClick={this.delete.bind(this, s._id)}>Delete</button> &nbsp;&nbsp;
-                                                        <button className="btn btn-info" onClick={this.edit.bind(this, s.technology, s.projectID, s.projectName, s.semester, s.student, s.course, s.assignment, s.scope, s.description, s.industryLink, s.application)}>Edit</button>
+                                                        <button className="btn btn-info" onClick={this.edit.bind(this, s._id, s.technology, s.projectID, s.projectName, s.semester, s.student, s.course, s.assignment, s.scope, s.description, s.industryLink, s.application)}>Edit</button>
                                                     </div>
                                                 </div>
                                             </div>
