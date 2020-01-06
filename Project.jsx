@@ -150,7 +150,7 @@ export default class Project extends Component {
                     <div className="row">
                         <div className="col-md-2">
                             <div className="dropdown">
-                                <button className="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Sort by Project ID</button>
+                                <button className="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Sort by Project Name</button>
                                 <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a className="dropdown-item" onClick={() => this.handleFilterByProjectID('asc')}>Ascending</a>
                                     <a className="dropdown-item" onClick={() => this.handleFilterByProjectID('des')}>Descending</a>
@@ -159,7 +159,7 @@ export default class Project extends Component {
                         </div>
                         <div className="col-md-8">
                             <div className="input-group mb-3">
-                                <input type="text" placeholder="Enter Key Word (Course, Technology, Project ID,...)" className="form-control" onChange={this.handleChange.bind(this)} name="keyword" value={this.state.keyword} />
+                                <input type="text" placeholder="Enter Key Word (Course, Technology, Project,...)" className="form-control" onChange={this.handleChange.bind(this)} name="keyword" value={this.state.keyword} />
                                 <div className="input-group-append">
                                     <button onClick={this.search_fields.bind(this, this.state.keyword)} className="btn btn-outline-secondary" type="button">Search</button>
                                 </div>
