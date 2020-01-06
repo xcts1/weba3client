@@ -46,7 +46,7 @@ export default class Auth extends Component {
                 console.log(err)
             })
     }
-    
+
     render() {
         return (
             <div className="login-page">
