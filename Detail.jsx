@@ -10,6 +10,7 @@ export default class Detail extends Component {
             projects: [],
             technology: [],
             projectID: "",
+            projectName:"",
             semester: "",
             student: [],
             course: [],
@@ -19,7 +20,8 @@ export default class Detail extends Component {
             industryLink: "",
             application: "",
             students: [{ studentID: "", studentName: "", studentYear: "" }],
-            courses: [{ courseID: "", courseName: "" }]
+            courses: [{ courseID: "", courseName: "" }],
+            projectImage: []
         }
 
     }
@@ -39,12 +41,12 @@ export default class Detail extends Component {
         return (
             <div>
                 <div className="container">
-                    <br/>
+                    <br />
                     <h2 className="text-center">PROJECT DETAILS</h2>
                     <div className="container">
                         {this.state.projects.map((s, idx) =>
                             <div key={idx}>
-                                <h5 className="text-center">PROJECT: {s.projectID}</h5>
+                                <h5 className="text-center">PROJECT: {s.projectID}: {s.projectName}</h5>
                                 <div className="row">
                                     <div className="col-lg-6">
                                         <strong style={{ textDecoration: 'underline' }}>Students:</strong> <br />
@@ -69,18 +71,38 @@ export default class Detail extends Component {
                                 <h4 className="text-center">IMAGES & VIDEOS</h4>
                                 <p className="text-center"><em>*Right click and choose "Open image in new tab" to view image in full-size</em></p>
                                 <div className="row">
-                                    {s.projectImage.map((s,index) =>
-                                        <div className="col-md-4" key={index[0]}>
+                                    {s.projectImage.map((s, index) =>
+                                        <div className="col-md-4">
                                             <div>
-                                                <iframe src={url1.concat(s)} allowFullScreen ></iframe>
-                                                {/* <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">View image</button>
-                                                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog modal-lg" key={index}>
-                                                        <div class="modal-content" key={index}>
-                                                            <iframe key={index} src={url1.concat(s)} allowFullScreen></iframe>
+                                                {
+                                                    url1.concat(s).includes('mp4') ?
+                                                        <div>
+                                                            <iframe src={url1.concat(s)} allowFullScreen ></iframe>
                                                         </div>
-                                                    </div>
-                                                </div> */}
+                                                        :
+                                                        <div>
+                                                            <div className="row">
+                                                                <div className="column">
+                                                                    <img src={url1.concat(s)} className="img-thumbnail hover-shadow" onclick="openModal();currentSlide(1)"></img>
+                                                                </div>
+                                                            </div>
+                                                            {/* <div class="photo-gallery">
+                                                                <div class="container">
+                                                                    <div class="row photos">
+                                                                        <div class="col-sm-4 item">
+                                                                            <div class="thumbnail">
+                                                                                <a href={url1.concat(s)} data-lightbox="photos">
+                                                                                    <img className="img-thumbnail" src={url1.concat(s)}/>
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                                                                        <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
+                                                                    </div>
+                                                                </div>
+                                                            </div> */}
+                                                        </div>
+                                                }
                                             </div>
                                         </div>)}
                                 </div>
