@@ -45,7 +45,7 @@ export default class ChangePassword extends Component {
                 <div className="form">
                     <form className='login-form'>
                         <h4 className="text-center">
-                            ADD NEW ADMIN USER
+                            CHANGE PASSWORD
                         </h4>
                         <br />
                         <input type="text" className="rounded-pill" id="username" name="username" value={this.state.username} placeholder="Username" onChange={this.handleChange.bind(this)} />
