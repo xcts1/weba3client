@@ -11,10 +11,14 @@ export default class Users extends Component {
             username: "",
         }
     }
+    componentDidMount() {
+        this.fetchData()
+    }
 
     fetchData() {
         const token = this.context.token
         fetch(url, {
+            method: "GET",
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + token,
