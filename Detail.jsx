@@ -75,35 +75,18 @@ export default class Detail extends Component {
                                         <div className="col-md-4">
                                             <div>
                                                 {
-                                                    url1.concat(s).includes('mp4') ?
+                                                    url1.concat(s).includes('video_', [0,5]) ?
                                                         <div className="row">
                                                             <div className="column">
-                                                                <iframe src={url1.concat(s)} allowFullScreen ></iframe>
+                                                                <iframe src={url1.concat(s)} allowFullScreen className="img-thumbnail hover-shadow"></iframe>
                                                             </div>
                                                         </div>
                                                         :
                                                         <div>
-                                                            <div className="row">
-                                                                <div className="column">
-                                                                    <img src={url1.concat(s)} className="img-thumbnail hover-shadow" onClick="openModal();currentSlide(1)"></img>
-                                                                </div>
+                                                            <div >
+                                                                <img src={url1.concat(s)} className="img-thumbnail hover-shadow" ></img>
                                                             </div>
-                                                            {/* <div class="photo-gallery">
-                                                                <div class="container">
-                                                                    <div class="row photos">
-                                                                        <div class="col-sm-4 item">
-                                                                            <div class="thumbnail">
-                                                                                <a href={url1.concat(s)} data-lightbox="photos">
-                                                                                    <img className="img-thumbnail" src={url1.concat(s)}/>
-                                                                                </a>
-                                                                            </div>
-                                                                        </div>
-                                                                        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-                                                                        <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
-                                                                    </div>
-                                                                </div>
-                                                            </div> */}
-                                                        </div>
+                                                        </div> 
                                                 }
                                             </div>
                                         </div>)}
