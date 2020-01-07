@@ -40,8 +40,8 @@ export default class App extends React.Component {
 							<Route path="/login" component={Auth} />
 							{!this.state.token && <Redirect from='/newUser' to='/login' exact />}
 							{this.state.token && <Route path="/newUser" component={NewUser} />}
-							<Route path="/changePassword" component={ChangePassword} />
-							{this.state.token && <Redirect from='/login' to='/changePassword' exact />}
+							{!this.state.token && <Redirect from='/changePassword' to='/login' exact />}
+							{this.state.token && <Route path="/changePassword" component={ChangePassword} />}
 							<Route path={""} component={Detail} />
 						</Switch>
 					</AuthContext.Provider>
