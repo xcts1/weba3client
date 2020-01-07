@@ -15,11 +15,9 @@ export default class Users extends Component {
     fetchData() {
         const token = this.context.token
         fetch(url, {
-            method: 'get',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + token,
-                'Accept': 'application/json'
             },
         })
             .then(res => res.json())
