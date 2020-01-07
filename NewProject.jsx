@@ -78,6 +78,7 @@ export default class NewProject extends Component {
     }
 
     save() {
+        
         if (this.state.addNew === true) {
             var bodyFormData = new FormData();
             bodyFormData.append('technology', this.state.technology)
@@ -94,11 +95,12 @@ export default class NewProject extends Component {
             for (const key of Object.keys(this.state.selectedFile)) {
                 bodyFormData.append('projectImage', this.state.selectedFile[key], this.state.selectedFile[key].name)
             }
+            const token = this.context.token
             axios({
                 method: 'post',
                 url: url,
                 data: bodyFormData,
-                headers: { 'Content-Type': 'multipart/form-data' }
+                headers: { 'Content-Type': 'multipart/form-data', 'Authorization': 'Bearer ' + token }
             })
                 .then(function (response) {
                     //handle success
@@ -129,11 +131,12 @@ export default class NewProject extends Component {
                 bodyFormData.append('projectImage', this.state.selectedFile[key], this.state.selectedFile[key].name)
             }
             console.log(bodyFormData)
+            const token = this.context.token
             axios({
                 method: 'put',
                 url: url,
                 data: bodyFormData,
-                headers: { 'Content-Type': 'multipart/form-data' }
+                headers: { 'Content-Type': 'multipart/form-data', 'Authorization': 'Bearer ' + token}
             })
                 .then(function (response) {
                     //handle success
@@ -152,8 +155,10 @@ export default class NewProject extends Component {
     delete(id) {
         console.log(url + id)
         if (confirm('Do you want to delete this project?')) {
+            const token = this.context.token
             fetch(url + id, {
                 method: 'delete',
+                headers: { 'Authorization': 'Bearer ' + token}
             }).then(res => res.json())
                 .then(json => this.fetchData())
         }
@@ -188,15 +193,25 @@ export default class NewProject extends Component {
     render() {
         return (
             <div>
-                <div className="jumbotron py-4 jumbotron-cover-image" >
-                    <div className="container" >
+                <div className="jumbotron py-4 bg-light">
+                    <div className="container-fluid">
                         <div className="row">
                             <div className="col-md-8">
-                                <h1 className="display-4" style={{color: 'grey'}}>Project Management</h1>
-                                <p className="lead" style={{color: 'grey'}}>Add, Edit, Delete, View student projects.</p>
+                                <h1 className="display-4">Student Project</h1>
+                                <p className="lead">Edit, delete or search for a student project here.</p>
                             </div>
                             <div className="col-md-4">
-                                
+                                <form>
+                                    <div className="form-group">
+                                        <label htmlFor="search">Search by project ID</label>
+                                        <div className="input-group">
+                                            <input type="text" className="form-control" id="search" value={this.state.term} placeholder='Enter the project ID' onChange={this.searchHandler} />
+                                            <div className="input-group-append">
+                                                <button type="button" className="btn btn-info btn-outline-dark mt-0.5 ml-1" onClick={() => this.setState({ term: '' })}>Clear</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -394,16 +409,6 @@ export default class NewProject extends Component {
                         <div className="col-md-7">
                             <div>
                                 <h3 className="text-center" style={{ letterSpacing: 2 + 'px' }}>LIST OF PROJECTS</h3>
-                                <form>
-                                    <div className="form-group">
-                                        <div className="input-group">
-                                            <input type="text" className="form-control" id="search" value={this.state.term} placeholder='Enter the project ID' onChange={this.searchHandler} />
-                                            <div className="input-group-append">
-                                                <button type="button" className="btn btn-info btn-outline-dark mt-0.5 ml-1" onClick={() => this.setState({ term: '' })}>Clear</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
                             </div>
                             <div className="container">
                                 <div className="projectList">
