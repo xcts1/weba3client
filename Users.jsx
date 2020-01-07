@@ -34,22 +34,16 @@ export default class Users extends Component {
 
     delete(id) {
         const token = this.context.token
-        if (confirm('Do you want to delete this user?')) {
+        if (confirm('Do you want to delete '+ id + '?')) {
             fetch(url1 + id, {
                 method: 'delete',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': 'Bearer ' + token,
                 },
-<<<<<<< HEAD
-            })
-            .then(res => res.json())
-                .then(json => this.fetchData())
-=======
             }).then(res => res.json())
                 .then(json => this.fetchData())
             { console.log(url + id) }
->>>>>>> 2d95aff43d2b0f2bda91aec4776e95133097c0a4
         }
     }
 
@@ -69,11 +63,7 @@ export default class Users extends Component {
                                     <td>
                                         {console.log(s)}
                                         Username : {s.username}
-<<<<<<< HEAD
-                                        <button type = "button" className="btn btn-danger" onClick={this.delete.bind(this, s.username)}>Delete</button> &nbsp;&nbsp;
-=======
-                                        <button type='button' className="btn btn-danger" onClick={this.delete.bind(this, s.username)}>Delete</button> &nbsp;&nbsp;
->>>>>>> 2d95aff43d2b0f2bda91aec4776e95133097c0a4
+                                        <button type='button' className="btn btn-danger" onClick={this.delete.bind(this, s.username)}>Delete</button>
                                     </td>
                                     {console.log('users: ' + s)}
                                 </tbody>)}
