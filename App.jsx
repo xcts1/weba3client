@@ -6,6 +6,7 @@ import Navbar from './Navbar.js'
 import NewUser from './NewUser.jsx'
 import Auth from './Auth.jsx'
 import AuthContext from './auth-context.js'
+import ChangePassword from './ChangePassword.jsx'
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 
 export default class App extends React.Component {
@@ -39,6 +40,8 @@ export default class App extends React.Component {
 							<Route path="/login" component={Auth} />
 							{!this.state.token && <Redirect from='/newUser' to='/login' exact />}
 							{this.state.token && <Route path="/newUser" component={NewUser} />}
+							<Route path="/changePassword" component={ChangePassword} />
+							{this.state.token && <Redirect from='/login' to='/changePassword' exact />}
 							<Route path={""} component={Detail} />
 						</Switch>
 					</AuthContext.Provider>

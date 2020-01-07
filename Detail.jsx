@@ -10,7 +10,7 @@ export default class Detail extends Component {
             projects: [],
             technology: [],
             projectID: "",
-            projectName:"",
+            projectName: "",
             semester: "",
             student: [],
             course: [],
@@ -76,8 +76,10 @@ export default class Detail extends Component {
                                             <div>
                                                 {
                                                     url1.concat(s).includes('mp4') ?
-                                                        <div>
-                                                            <iframe src={url1.concat(s)} allowFullScreen ></iframe>
+                                                        <div className="row">
+                                                            <div className="column">
+                                                                <iframe src={url1.concat(s)} allowFullScreen ></iframe>
+                                                            </div>
                                                         </div>
                                                         :
                                                         <div>
