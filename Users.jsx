@@ -12,6 +12,7 @@ export default class Users extends Component {
             username: "",
         }
     }
+
     componentDidMount() {
         this.fetchData()
     }
@@ -28,13 +29,10 @@ export default class Users extends Component {
             .then(res => res.json())
             .then(json => this.setState({ users: json }))
     }
-    componentDidMount() {
-        this.fetchData()
-    }
 
     delete(id) {
         const token = this.context.token
-        if (confirm('Do you want to delete '+ id + '?')) {
+        if (confirm('Do you want to delete ' + id + '?')) {
             fetch(url1 + id, {
                 method: 'delete',
                 headers: {
