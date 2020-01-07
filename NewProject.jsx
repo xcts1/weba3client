@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import AuthContext from './auth-context.js'
 const url = 'http://13.229.31.156/projects/'
 const url1 = 'http://13.229.31.156/'
 // const url = 'http://localhost:9000/projects/'
@@ -11,6 +12,7 @@ function searchingFor(term) {
 }
 
 export default class NewProject extends Component {
+    static contextType = AuthContext;
     constructor(props) {
         super(props)
         this.state = {
