@@ -48,6 +48,7 @@ export default class Users extends Component {
     }
 
     render() {
+        const userID = this.context.userID
         return (
             <div className="login-page">
                 <div className="form">
@@ -63,6 +64,7 @@ export default class Users extends Component {
                                     <td>
                                         {console.log(s)}
                                         Username : {s.username}
+                                        
                                         <button type='button' className="btn btn-danger" onClick={this.delete.bind(this, s.username)}>Delete</button>
                                     </td>
                                     {console.log('users: ' + s)}

@@ -122,6 +122,11 @@
     height: 100%;
 }
 
+div.projectList{
+    height: 1000px;
+    overflow-y: scroll;
+}
+
 body {
     font-family: "Roboto", sans-serif;
     -webkit-font-smoothing: antialiased;

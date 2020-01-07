@@ -406,21 +406,26 @@ export default class NewProject extends Component {
                                 <h3 className="text-center" style={{ letterSpacing: 2 + 'px' }}>LIST OF PROJECTS</h3>
                             </div>
                             <div className="container">
-                                <div className="row">
-                                    {this.state.projects.filter(searchingFor(this.state.term)).map((s, index) =>
-                                        <div className="col-md-3" key={index}>
-                                            <div className="card-deck">
-                                                <div className="card mb-4 h-100" style={{ maxWidth: 20 + 'rem' }}>
-                                                    <div className="card-body">
-                                                        <h4 className="card-title">{s.projectID}</h4>
-                                                        <h6 className="card-subtitle mb-2 text-muted">{s.course.map(s => s.courseName)}</h6>
-                                                        <p className="card-text">{s.description}</p>
-                                                        <button className="btn btn-danger" onClick={this.delete.bind(this, s._id)}>Delete</button> &nbsp;&nbsp;
-                                                        <button className="btn btn-info" onClick={this.edit.bind(this, s._id, s.technology, s.projectID, s.projectName, s.semester, s.student, s.course, s.assignment, s.scope, s.description, s.industryLink, s.application)}>Edit</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>)}
+                                <div className="projectList">
+                                    <table className="table table-hover" style ={{marginTop: 20}}>
+                                        {this.state.projects.filter(searchingFor(this.state.term)).map((s) =>
+                                            <tbody style={{ width: 100 }}>
+                                                <tr>
+                                                    <td style={{ width: 650 + 'px' }, { textAlign: "left" }}>
+                                                        <strong>Project ID: </strong>{s.projectID} <br />
+                                                        <strong>Project Name: </strong> {s.projectName} <br />
+                                                        <strong>Semester: </strong>{s.semester} <br />
+                                                        <strong>Description: </strong> {s.description} <br />
+                                                    </td>
+                                                    <td><button className="btn btn-danger" onClick={this.delete.bind(this, s._id)}>Delete</button></td>
+                                                    <td><button className="btn btn-info" onClick={this.edit.bind(this, s._id, s.technology, s.projectID, s.projectName, s.semester, s.student, s.course, s.assignment, s.scope, s.description, s.industryLink, s.application)}>Edit</button></td>
+                                                </tr>
+
+                                            </tbody>
+
+                                        )}
+                                    </table>
+
                                 </div>
                             </div>
                         </div>
