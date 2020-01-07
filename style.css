@@ -127,6 +127,14 @@ div.projectList{
     overflow-y: scroll;
 }
 
+.jumbotron-cover-image {
+    position: relative;
+    background: #000 url("https://www.aspiresport.eu/sites/default/files/aspire-orange.png") center center;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    color: #fff;
+}
 body {
     font-family: "Roboto", sans-serif;
     -webkit-font-smoothing: antialiased;

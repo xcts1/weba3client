@@ -123,12 +123,12 @@ export default class Project extends Component {
         {console.log("unique1: " + unique1)}
         return (
             <div>
-                <div className="jumbotron py-4 bg-light">
+                <div className="jumbotron py-4 jumbotron-cover-image">
                     <div className="container">
                         <div className="row">
                             <div className="col-md-8">
-                                <h1 className="display-4">Student Project</h1>
-                                <p className="lead">Edit, delete or search for a student project here.</p>
+                                <h1 className="display-4" style={{color: 'grey'}}>Student Project</h1>
+                                <p className="lead" style={{color: 'grey'}}>View, Filter, Sort, Search for a student project.</p>
                             </div>
                             <div className="col-md-4">
                                 <form>
