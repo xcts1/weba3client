@@ -173,7 +173,7 @@ export default class Project extends Component {
                                                 <div className="input-group">
                                                     <input type="text" className="form-control" id="search" value={this.state.term} placeholder='Project ID' onChange={this.searchHandler} />
                                                     <div className="input-group-append">
-                                                        <button type="button" className="btn btn-info btn-outline-dark mt-0.5 ml-1" onClick={() => this.setState({ term: '' })}>Clear</button>
+                                                        <button type="button" className="btn btn-danger" onClick={() => this.setState({ term: '' })}>Clear</button>
                                                     </div>
                                                 </div>
                                             </div>
