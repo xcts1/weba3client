@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import AuthContext from './auth-context.js'
 const url = 'http://13.229.31.156/users/'
+const url1 = 'http://13.229.31.156/user/'
 export default class Users extends Component {
     static contextType = AuthContext;
     constructor(props) {
@@ -34,14 +35,15 @@ export default class Users extends Component {
     delete(id) {
         const token = this.context.token
         if (confirm('Do you want to delete this user?')) {
-            fetch(url + id, {
+            fetch(url1 + id, {
                 method: 'delete',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': 'Bearer ' + token,
                 },
             }).then(res => res.json())
-               {console.log(url+id)}
+                .then(json => this.fetchData())
+            { console.log(url + id) }
         }
     }
 
@@ -61,7 +63,7 @@ export default class Users extends Component {
                                     <td>
                                         {console.log(s)}
                                         Username : {s.username}
-                                        <button className="btn btn-danger" onClick={()=>this.delete.bind(this, s.username)}>Delete</button> &nbsp;&nbsp;
+                                        <button type='button' className="btn btn-danger" onClick={this.delete.bind(this, s.username)}>Delete</button> &nbsp;&nbsp;
                                     </td>
                                     {console.log('users: ' + s)}
                                 </tbody>)}
