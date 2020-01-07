@@ -20,6 +20,7 @@ export default class ChangePassword extends Component {
     save(e) {
         e.preventDefault();
         const token = this.context.token
+        const logout = this.context.logout
         var url = 'http://13.229.31.156/change-password'
         fetch(url, {
             method: 'put',
@@ -35,9 +36,10 @@ export default class ChangePassword extends Component {
                     throw new Error('No such username'),
                     alert('Username or password is incorrect')
                 } else {
-                    alert('Password changed!')
+                    alert('Password changed! You are logging out...')
                 }
             })
+            .then(logout)
     }
     render() {
         return (
