@@ -20,6 +20,15 @@ export default class NewUser extends Component {
 
     save(e) {
         e.preventDefault();
+        if (this.state.username.trim().length === 0 || this.state.password.trim().length === 0) {
+            if(this.state.username.trim().length === 0){
+                alert('Username must not be empty')
+            }
+            else if (this.state.password.trim().length === 0){
+                alert('Password must not be empty')
+            }
+            return;
+        }
         const token = this.context.token
         var url = 'http://13.229.31.156/signup'
         fetch(url, {
