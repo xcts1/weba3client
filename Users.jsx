@@ -42,12 +42,8 @@ export default class Users extends Component {
                     'Authorization': 'Bearer ' + token,
                 },
             }).then(res => res.json())
-<<<<<<< HEAD
                 .then(json => this.fetchData())
             { console.log(url + id) }
-=======
-               {console.log(url1+id)}
->>>>>>> b51ba5eaf95ff49d71d75536185484031cf17ea9
         }
     }
 
@@ -67,11 +63,7 @@ export default class Users extends Component {
                                     <td>
                                         {console.log(s)}
                                         Username : {s.username}
-<<<<<<< HEAD
                                         <button type='button' className="btn btn-danger" onClick={this.delete.bind(this, s.username)}>Delete</button> &nbsp;&nbsp;
-=======
-                                        <button className="btn btn-danger" onClick={this.delete.bind(this, s.username)}>Delete</button> &nbsp;&nbsp;
->>>>>>> b51ba5eaf95ff49d71d75536185484031cf17ea9
                                     </td>
                                     {console.log('users: ' + s)}
                                 </tbody>)}
