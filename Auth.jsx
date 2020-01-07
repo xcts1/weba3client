@@ -15,6 +15,12 @@ export default class Auth extends Component {
         const username = this.usernameEl.current.value;
         const password = this.passwordEl.current.value;
         if (username.trim().length === 0 || password.trim().length === 0) {
+            if(username.trim().length === 0){
+                alert('Username must not be empty')
+            }
+            else if (password.trim().length === 0){
+                alert('Password must not be empty')
+            }
             return;
         }
         console.log(username, password)

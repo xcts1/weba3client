@@ -22,6 +22,18 @@ export default class ChangePassword extends Component {
         const token = this.context.token
         const logout = this.context.logout
         var url = 'http://13.229.31.156/change-password'
+        if (this.state.username.trim().length === 0 || this.state.password.trim().length === 0 ||  this.state.newPassword.trim().length === 0) {
+            if(this.state.username.trim().length === 0){
+                alert('Username must not be empty')
+            }
+            else if (this.state.password.trim().length === 0){
+                alert('Password must not be empty')
+            }
+            else if (this.state.newPassword.trim().length === 0){
+                alert('New password must not be empty')
+            }
+            return;
+        }
         fetch(url, {
             method: 'put',
             headers: {
