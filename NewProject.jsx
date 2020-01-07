@@ -31,7 +31,7 @@ export default class NewProject extends Component {
             student: [{ studentID: "", studentName: "", studentYear: "" }],
             course: [{ courseID: "", courseName: "" }],
             addNew: true,
-            selectedFile: null,
+            selectedFile: [],
             projectImage: ""
         }
         this.searchHandler = this.searchHandler.bind(this);
@@ -193,6 +193,23 @@ export default class NewProject extends Component {
     }
 
     render() {
+        const isEnabled = this.state.projectID.length > 0 
+        && this.state.technology.length > 0
+        &&this.state.projectName.length > 0
+        &&this.state.semester.length >0
+        &&this.state.student.map(s=>s.studentName.length) >0
+        &&this.state.student.map(s=>s.studentID.length) >0
+        &&this.state.student.map(s=>s.studentYear.length) >0
+        &&this.state.course.map(s=>s.courseID.length) > 0
+        &&this.state.course.map(s=>s.courseName.length) > 0
+        &&this.state.assignment.map(s=>s.assignmentName.length) > 0
+        &&this.state.assignment.map(s=>s.assignmentDescription.length) > 0
+        &&this.state.assignment.map(s=>s.assignmentPercentage.length) > 0
+        &&this.state.scope.length>0
+        &&this.state.industryLink.length>0
+        &&this.state.application.length>0
+        &&this.state.description.length>0
+        &&this.state.selectedFile.length>0 
         return (
             <div>
                 <div className="jumbotron py-4 jumbotron-cover-image">
@@ -403,7 +420,7 @@ export default class NewProject extends Component {
                                     <input type="file" name="file" onChange={this.fileSelectedHandler.bind(this)} multiple />
                                 </form>
                                 <br />
-                                <button className="btn btn-primary" onClick={this.save.bind(this)} >Save</button>  &nbsp; &nbsp;
+                                <button className="btn btn-primary" onClick={this.save.bind(this)} active={isEnabled} disabled={!isEnabled}>Save</button>  &nbsp; &nbsp;
                                     <button className="btn btn-success" onClick={this.add.bind(this)}>Reset</button>
                                 <br />
                             </div>
