@@ -298,7 +298,7 @@ export default class NewProject extends Component {
                                                             <div className="col-md-4">
                                                                 <label htmlFor={studentYear}>Year</label>
                                                                 <input
-                                                                    type="text"
+                                                                    type="number"
                                                                     name="studentYear"
                                                                     placeholder="Enter student year"
                                                                     data-id={idx}
@@ -387,7 +387,7 @@ export default class NewProject extends Component {
                                                         />
                                                         <label htmlFor={assignmentPercentage}>Percentage</label>
                                                         <input
-                                                            type="text"
+                                                            type="number"
                                                             name="assignmentPercentage"
                                                             placeholder="Enter Assignment Percentage"
                                                             data-id={idx}
