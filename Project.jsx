@@ -110,45 +110,44 @@ export default class Project extends Component {
 
         const unique1 = []
         const renderList = this.state.tempt_projects.map(s => {
-            s.course.map(s=>{
-                if(!unique1.includes(s.courseID)){
+            s.course.map(s => {
+                if (!unique1.includes(s.courseID)) {
                     unique1.push(s.courseID)
                 }
-                return(
+                return (
                     unique1
                 )
             })
-            
+
         })
-        {console.log("unique1: " + unique1)}
+        { console.log("unique1: " + unique1) }
         return (
             <div>
                 <div className="jumbotron py-4 jumbotron-cover-image">
                     <div className="container">
                         <div className="row">
                             <div className="col-md-8">
-                                <h1 className="display-4" style={{color: 'grey'}}>Student Project</h1>
-                                <p className="lead" style={{color: 'grey'}}>View, Filter, Sort, Search for a student project.</p>
+                                <h1 className="display-4" style={{ color: 'grey' }}>Student Project</h1>
+                                <p className="lead" style={{ color: 'grey' }}>View, Filter, Sort, Search for a student project.</p>
                             </div>
                             <div className="col-md-4">
-                                <form>
-                                    <div className="form-group">
-                                        <label htmlFor="search">Search by project ID</label>
-                                        <div className="input-group">
-                                            <input type="text" className="form-control" id="search" value={this.state.term} placeholder='Enter the project ID' onChange={this.searchHandler} />
-                                            <div className="input-group-append">
-                                                <button type="button" className="btn btn-info btn-outline-dark mt-0.5 ml-1" onClick={() => this.setState({ term: '' })}>Clear</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
+
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="container-fluid">
                     <div className="row">
-                        <div className="col-md-2">
+                        <div className="col-md-3"></div>
+                    <div className="col-md-5">
+                            <div className="input-group mb-3">
+                                <input type="text" placeholder="Enter Key Word (Course, Technology, Project,...)" className="form-control" onChange={this.handleChange.bind(this)} name="keyword" value={this.state.keyword} />
+                                <div className="input-group-append">
+                                    <button onClick={this.search_fields.bind(this, this.state.keyword)} className="btn btn-outline-secondary" type="button">Search</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-md-4">
                             <div className="dropdown">
                                 <button className="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Sort by Project Name</button>
                                 <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -157,26 +156,28 @@ export default class Project extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-8">
-                            <div className="input-group mb-3">
-                                <input type="text" placeholder="Enter Key Word (Course, Technology, Project,...)" className="form-control" onChange={this.handleChange.bind(this)} name="keyword" value={this.state.keyword} />
-                                <div className="input-group-append">
-                                    <button onClick={this.search_fields.bind(this, this.state.keyword)} className="btn btn-outline-secondary" type="button">Search</button>
-                                </div>
-                            </div>
-                        </div>
                         <div className="col-md-4"></div>
                     </div>
                 </div>
                 <div className="container-fluid">
                     <div className="row">
-                        <div className="col-md-2">
+                        <div className="col-lg-2">
                             <div>
                                 <div className="border border-secondary">
                                     <div className='card-header bg-warning text-white'>
                                         <h5>Filter Projects</h5>
                                     </div>
                                     <div className='card-body'>
+                                        <form>
+                                            <div className="form-group">
+                                                <div className="input-group">
+                                                    <input type="text" className="form-control" id="search" value={this.state.term} placeholder='Project ID' onChange={this.searchHandler} />
+                                                    <div className="input-group-append">
+                                                        <button type="button" className="btn btn-info btn-outline-dark mt-0.5 ml-1" onClick={() => this.setState({ term: '' })}>Clear</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
                                         <div className='card-header' style={{ backgroundColor: 'white' }}>
                                             <h6 className="card-title"> <strong>Semester</strong></h6>
                                             <div className="list-group">
@@ -202,7 +203,7 @@ export default class Project extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-10">
+                        <div className="col-lg-10">
                             <div className="row">
                                 {this.state.projects.filter(searchingFor(this.state.term)).map((s, index) =>
                                     <div className="col-md-3" key={index}>
