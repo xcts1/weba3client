@@ -240,6 +240,7 @@ export default class NewProject extends Component {
                         <div className="col-md-5">
                             <div className="container-fluid">
                                 <form>
+                                    <p style={{color: 'red'}}><em>*Fill all the information to enable "Save" button</em></p>
                                     <div className="form-group">
                                         <label htmlFor="projectID">Project ID</label>
                                         <input type="text" className="form-control" id="projectID" name='projectID' value={this.state.projectID} placeholder="Enter Project ID" onChange={this.handleChange.bind(this)} required />
