@@ -41,8 +41,9 @@ export default class Users extends Component {
                     'Content-Type': 'application/json',
                     'Authorization': 'Bearer ' + token,
                 },
-            }).then(res => res.json())
-               {console.log(url1+id)}
+            })
+            .then(res => res.json())
+                .then(json => this.fetchData())
         }
     }
 
@@ -62,7 +63,7 @@ export default class Users extends Component {
                                     <td>
                                         {console.log(s)}
                                         Username : {s.username}
-                                        <button className="btn btn-danger" onClick={this.delete.bind(this, s.username)}>Delete</button> &nbsp;&nbsp;
+                                        <button type = "button" className="btn btn-danger" onClick={this.delete.bind(this, s.username)}>Delete</button> &nbsp;&nbsp;
                                     </td>
                                     {console.log('users: ' + s)}
                                 </tbody>)}
