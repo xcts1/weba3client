@@ -53,7 +53,8 @@ export default class NewUser extends Component {
                         <input type="text" className="rounded-pill" id="username" name="username" value={this.state.username} placeholder="Username" onChange={this.handleChange.bind(this)} />
                         <input type="password" className="rounded-pill" id="password" name="password" value={this.state.password} placeholder="Password" onChange={this.handleChange.bind(this)} />
                         <button type="submit"  className="rounded-pill btn-block z-depth-0 my-4 waves-effect btn-success"  onClick={this.save.bind(this)}>Sign up</button>
-                        <Link to="/changePassword" className="link">Change user password</Link>
+                        <Link to="/changePassword" className="link">Change user password</Link> <br/>
+                        <Link to="/users" className="link">View user list</Link>
                 </form>
                 </div>  
             </div>

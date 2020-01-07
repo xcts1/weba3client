@@ -4,6 +4,7 @@ import Project from './Project.jsx'
 import Detail from './Detail.jsx'
 import Navbar from './Navbar.js'
 import NewUser from './NewUser.jsx'
+import Users from './Users.jsx'
 import Auth from './Auth.jsx'
 import AuthContext from './auth-context.js'
 import ChangePassword from './ChangePassword.jsx'
@@ -42,6 +43,8 @@ export default class App extends React.Component {
 							{this.state.token && <Route path="/newUser" component={NewUser} />}
 							{!this.state.token && <Redirect from='/changePassword' to='/login' exact />}
 							{this.state.token && <Route path="/changePassword" component={ChangePassword} />}
+							{!this.state.token && <Redirect from='/users' to='/login' exact />}
+							{this.state.token && <Route path="/users" component={Users} />}
 							<Route path={""} component={Detail} />
 						</Switch>
 					</AuthContext.Provider>

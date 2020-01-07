@@ -33,11 +33,17 @@ export default class ChangePassword extends Component {
         })
             .then(res => {
                 if (res.status == 401) {
-                    throw new Error('No such username'),
+                    throw new Error('Original password incorrect'),
                     alert('Username or password is incorrect')
-                } else {
-                    alert('Password changed! You are logging out...')
                 }
+                else if(res.status == 400){
+                    throw new Error ('No such username'),
+                    alert('Username is not available')
+                }
+                else {
+                    alert('Password changed! You are loggin out...')
+                    
+                }  
             })
             .then(logout)
     }
@@ -54,7 +60,8 @@ export default class ChangePassword extends Component {
                         <input type="password" className="rounded-pill" id="password" name="password" value={this.state.password} placeholder="Password" onChange={this.handleChange.bind(this)} />
                         <input type="password" className="rounded-pill" id="newPassword" name="newPassword" value={this.state.newPassword} placeholder="New password" onChange={this.handleChange.bind(this)} />
                         <button type="submit" className="rounded-pill btn-block z-depth-0 my-4 waves-effect btn-success" onClick={this.save.bind(this)}>Save</button>
-                        <Link to="/newUser" className="link" >Add new user</Link>
+                        <Link to="/newUser" className="link" >Add new user</Link> <br/>
+                        <Link to="/users" className="link">View user list</Link>
                     </form>
                 </div>
             </div>
