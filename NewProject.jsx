@@ -195,12 +195,12 @@ export default class NewProject extends Component {
     render() {
         return (
             <div>
-                <div className="jumbotron py-4 bg-light">
-                    <div className="container-fluid">
+                <div className="jumbotron py-4 jumbotron-cover-image">
+                    <div className="container">
                         <div className="row">
                             <div className="col-md-8">
-                                <h1 className="display-4">Student Project</h1>
-                                <p className="lead">Edit, delete or search for a student project here.</p>
+                                <h1 className="display-4" style={{color: 'grey'}}>Student Project</h1>
+                                <p className="lead" style={{color: 'grey'}}>Edit, delete or search for a student project here.</p>
                             </div>
                             <div className="col-md-4">
                                 <form>
