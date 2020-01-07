@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-
+import AuthContext from './auth-context.js'
 import { Link } from 'react-router-dom'
-
 export default class NewUser extends Component {
+    static contextType = AuthContext;
     constructor(props) {
         super(props)
         this.state = {
@@ -49,13 +49,13 @@ export default class NewUser extends Component {
                         <h4 className="text-center">
                             ADD NEW ADMIN USER
                         </h4>
-                        <br />
+                        <br/>
                         <input type="text" className="rounded-pill" id="username" name="username" value={this.state.username} placeholder="Username" onChange={this.handleChange.bind(this)} />
                         <input type="password" className="rounded-pill" id="password" name="password" value={this.state.password} placeholder="Password" onChange={this.handleChange.bind(this)} />
-                        <button type="submit" className="rounded-pill btn-block z-depth-0 my-4 waves-effect btn-success" onClick={this.save.bind(this)}>Sign up</button>
+                        <button type="submit"  className="rounded-pill btn-block z-depth-0 my-4 waves-effect btn-success"  onClick={this.save.bind(this)}>Sign up</button>
                         <Link to="/changePassword" className="link">Change user password</Link>
-                    </form>
-                </div>
+                </form>
+                </div>  
             </div>
         )
     }
