@@ -54,7 +54,7 @@ export default class ChangePassword extends Component {
                     alert('Username is not available')
                 }
                 else {
-                    alert('Password changed! You are loggin out...') 
+                    alert('Password changed! You are logging out...') 
                 }  
             })
             .then(logout)

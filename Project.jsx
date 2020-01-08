@@ -206,7 +206,7 @@ export default class Project extends Component {
                         <div className="col-lg-10">
                             <div className="row">
                                 {this.state.projects.filter(searchingFor(this.state.term)).map((s, index) =>
-                                    <div className="col-lg-4 col-sm-6 d-flex">
+                                    <div className="col-lg-4 col-sm-6 d-flex" style={{width: 100 }}>
                                         <div className="card my-2">
                                             <div className="card-body">
                                                     <h5 className="card-title">{s.projectID}: {s.projectName}</h5>

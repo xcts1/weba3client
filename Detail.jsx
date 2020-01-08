@@ -75,10 +75,10 @@ export default class Detail extends Component {
                                         <div className="col-md-4">
                                             <div>
                                                 {
-                                                    url1.concat(s).includes('video_', [0,5]) ?
+                                                    url1.concat(s).includes('mp4') ?
                                                         <div className="row">
                                                             <div className="column">
-                                                                <iframe src={url1.concat(s)} allowFullScreen className="img-thumbnail hover-shadow"></iframe>
+                                                                <iframe src={url1.concat(s)} allowFullScreen></iframe>
                                                             </div>
                                                         </div>
                                                         :
