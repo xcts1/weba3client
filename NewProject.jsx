@@ -426,7 +426,7 @@ export default class NewProject extends Component {
                                     <input type="file" name="file" onChange={this.fileSelectedHandler.bind(this)} multiple />
                                 </form>
                                 <br />
-                                <button className="btn btn-primary" onClick={this.save.bind(this)} active={isEnabled} disabled={!isEnabled}>Save</button>  &nbsp; &nbsp;
+                                <button className="btn btn-primary" onClick={this.save.bind(this)} disabled={!isEnabled}>Save</button>  &nbsp; &nbsp;
                                     <button className="btn btn-success" onClick={this.add.bind(this)}>Reset</button>
                                 <br />
                             </div>
