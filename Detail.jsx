@@ -73,7 +73,7 @@ export default class Detail extends Component {
                                 <strong>Industry Link: </strong>{s.industryLink} <br />
                                 <strong>Application: </strong> {s.application}
                                 <h4 className="text-center">IMAGES & VIDEOS</h4>
-                                <p className="text-center"><em>*Right click and choose "Open image in new tab" to view image in full-size</em></p>
+                                {/* <p className="text-center"><em>*Right click and choose "Open image in new tab" to view image in full-size</em></p> */}
                                 <div className="row">
                                     {s.projectImage.map((s, index) =>
                                         <div className="col-md-4">

@@ -21,6 +21,7 @@ export default class App extends React.Component {
 	logout = () => {
 		this.setState({ token: null, userID: null })
 	}
+	
 	render() {
 		return (
 			<Router>
