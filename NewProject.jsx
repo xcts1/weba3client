@@ -328,7 +328,7 @@ export default class NewProject extends Component {
                                                         <div className="row">
                                                             <div className="col-md-6" >
                                                                 <label htmlFor={courseID}>Course ID</label>
-                                                                <div data-tip="Enter Course ID">
+                                                                
                                                                     <input
                                                                         type="text"
                                                                         placeholder="Enter Course ID"
@@ -339,7 +339,7 @@ export default class NewProject extends Component {
                                                                         className="form-control"
                                                                         onChange={this.handleChange.bind(this)}
                                                                     />
-                                                                </div>
+                                                                
 
                                                             </div>
                                                             <div className="col-md-6">
@@ -455,7 +455,6 @@ export default class NewProject extends Component {
 
                                         )}
                                     </table>
-
                                 </div>
                             </div>
                         </div>
