@@ -95,7 +95,7 @@ export default class NewProject extends Component {
             for (const key of Object.keys(this.state.selectedFile)) {
                 bodyFormData.append('projectImage', this.state.selectedFile[key], this.state.selectedFile[key].name)
             }
-            
+
             axios({
                 method: 'post',
                 url: url,
@@ -131,7 +131,7 @@ export default class NewProject extends Component {
                 bodyFormData.append('projectImage', this.state.selectedFile[key], this.state.selectedFile[key].name)
             }
             console.log(bodyFormData)
-            
+
             axios({
                 method: 'put',
                 url: url,
@@ -209,7 +209,7 @@ export default class NewProject extends Component {
             && this.state.application.length > 0
             && this.state.description.length > 0
             && this.state.selectedFile.length > 0
-        console.log(isEnabled)
+        
         return (
             <div>
                 <div className="jumbotron py-4 jumbotron-cover-image">
