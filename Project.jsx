@@ -211,10 +211,13 @@ export default class Project extends Component {
                                             <div className="card-body">
                                                     <h5 className="card-title">{s.projectID}: {s.projectName}</h5>
                                                     <h6 className="card-subtitle mb-2 text-muted">{s.course.map(s => s.courseName)}</h6>
-                                                    <div className="card-text" style={{ height: 5 + 'rem' }}>
+                                                    <div className="card-text">
                                                         {s.description} <br /> <br />
                                                         <em> <strong>Technology used:</strong> {s.technology}</em></div>
-                                                        <Link to={`${s.projectID}`}>
+                                                        
+                                                </div>
+                                                <div className = "card-body">
+                                                <Link to={`${s.projectID}`}>
                                                         <button className="btn btn-primary ">View Detail</button>
                                                     </Link>
                                                 </div>
