@@ -3,8 +3,6 @@ import axios from 'axios'
 import AuthContext from './auth-context.js'
 const url = 'http://13.229.31.156/projects/'
 const url1 = 'http://13.229.31.156/'
-// const url = 'http://localhost:9000/projects/'
-// const url1 = 'http://localhost:9000/'
 function searchingFor(term) {
     return function (x) {
         return x.projectID.includes(term) || !term;
@@ -80,7 +78,7 @@ export default class NewProject extends Component {
     }
 
     save() {
-
+        const token = this.context.token
         if (this.state.addNew === true) {
             var bodyFormData = new FormData();
             bodyFormData.append('technology', this.state.technology)
@@ -97,7 +95,7 @@ export default class NewProject extends Component {
             for (const key of Object.keys(this.state.selectedFile)) {
                 bodyFormData.append('projectImage', this.state.selectedFile[key], this.state.selectedFile[key].name)
             }
-            const token = this.context.token
+            
             axios({
                 method: 'post',
                 url: url,
@@ -133,7 +131,7 @@ export default class NewProject extends Component {
                 bodyFormData.append('projectImage', this.state.selectedFile[key], this.state.selectedFile[key].name)
             }
             console.log(bodyFormData)
-            const token = this.context.token
+            
             axios({
                 method: 'put',
                 url: url,
