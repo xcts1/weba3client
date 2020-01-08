@@ -139,7 +139,7 @@ export default class Project extends Component {
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-md-3"></div>
-                    <div className="col-md-5">
+                        <div className="col-md-5">
                             <div className="input-group mb-3">
                                 <input type="text" placeholder="Enter Key Word (Course, Technology, Project,...)" className="form-control" onChange={this.handleChange.bind(this)} name="keyword" value={this.state.keyword} />
                                 <div className="input-group-append">
@@ -206,23 +206,18 @@ export default class Project extends Component {
                         <div className="col-lg-10">
                             <div className="row">
                                 {this.state.projects.filter(searchingFor(this.state.term)).map((s, index) =>
-                                    <div className="col-md-3" key={index}>
-                                        <div className="card-deck">
-                                            <div className="card mb-3" style={{ width: 12 + 'rem', height: 15 + 'rem' }}>
-                                                <div className="card-body">
+                                    <div className="col-lg-4 col-sm-6 d-flex">
+                                        <div className="card my-2">
+                                            <div className="card-body">
                                                     <h5 className="card-title">{s.projectID}: {s.projectName}</h5>
                                                     <h6 className="card-subtitle mb-2 text-muted">{s.course.map(s => s.courseName)}</h6>
                                                     <div className="card-text" style={{ height: 5 + 'rem' }}>
                                                         {s.description} <br /> <br />
                                                         <em> <strong>Technology used:</strong> {s.technology}</em></div>
-                                                </div>
-                                                <div className="card-text">
-                                                    <Link to={`${s.projectID}`}>
+                                                        <Link to={`${s.projectID}`}>
                                                         <button className="btn btn-primary ">View Detail</button>
                                                     </Link>
                                                 </div>
-                                            </div>
-                                            <br />
                                         </div>
                                     </div>
                                 )}
