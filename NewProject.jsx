@@ -80,122 +80,78 @@ export default class NewProject extends Component {
     }
 
     save() {
-        if( this.state.projectID.length === 0
-            || this.state.technology.length === 0
-            || this.state.projectName.length === 0
-            || this.state.semester.length === 0
-            || this.state.student.map((val,idx) => this.state.student[idx].studentName.length)===0
-            || this.state.student.map((val,idx) => this.state.student[idx].studentID.length) ===0
-            || this.state.student.map((val,idx) => this.state.student[idx].length)===0
-            || this.state.course.map(s => s.courseID.length) === 0
-            || this.state.course.map(s => s.courseName.length) === 0
-            || this.state.assignment.map(s => s.assignmentName.length) === 0
-            || this.state.assignment.map(s => s.assignmentDescription.length) ===0
-            || this.state.assignment.map(s => s.assignmentPercentage.length) === 0
-            || this.state.scope.length === 0
-            || this.state.description.length === 0
-            || this.state.selectedFile.length === 0){
-                if(this.state.projectID.length === 0){
-                    alert('Project ID can not be empty')
-                }
-                else if(this.state.projectName.length === 0){
-                    alert('Project Name can not be empty')
-                }
-                else if(this.state.technology.length===0){
-                    alert('Technology can not be empty')
-                }
-                else if(this.state.semester.length===0){
-                    alert('Semester can not be empty')
-                }
-                else if(this.state.course.length ===0){
-                    alert('Course Name can not be empty')
-                }
-                else if(this.state.selectedFile.length === 0){
-                    alert('Image can not be empty')
-                }
-                else if (this.state.scope.length === 0){
-                    alert('Scope can not be empty')
-                }
-                else if(this.state.description.length === 0){
-                    alert('Description can not be empty')
-                }
-            return;
 
-        }
-        else{
-            if (this.state.addNew === true) {
-                var bodyFormData = new FormData();
-                bodyFormData.append('technology', this.state.technology)
-                bodyFormData.append('projectID', this.state.projectID)
-                bodyFormData.append('projectName', this.state.projectName)
-                bodyFormData.append('semester', this.state.semester)
-                bodyFormData.append('student', JSON.stringify(this.state.student))
-                bodyFormData.append('course', JSON.stringify(this.state.course))
-                bodyFormData.append('assignment', JSON.stringify(this.state.assignment))
-                bodyFormData.append('scope', this.state.scope)
-                bodyFormData.append('description', this.state.description)
-                bodyFormData.append('industryLink', this.state.industryLink)
-                bodyFormData.append('application', this.state.application)
-                for (const key of Object.keys(this.state.selectedFile)) {
-                    bodyFormData.append('projectImage', this.state.selectedFile[key], this.state.selectedFile[key].name)
-                }
-                const token = this.context.token
-                axios({
-                    method: 'post',
-                    url: url,
-                    data: bodyFormData,
-                    headers: { 'Content-Type': 'multipart/form-data', 'Authorization': 'Bearer ' + token }
-                })
-                    .then(function (response) {
-                        //handle success
-                        console.log(response);
-                    })
-    
-                    .then(json => this.fetchData())
-                    .then(() => alert('Project Added'))
-                    .catch(function (response) {
-                        //handle error
-                        console.log(response);
-                    });
-            } else {
-                var bodyFormData = new FormData();
-                bodyFormData.append('_id', this.state._id)
-                bodyFormData.append('technology', this.state.technology)
-                bodyFormData.append('projectID', this.state.projectID)
-                bodyFormData.append('projectName', this.state.projectName)
-                bodyFormData.append('semester', this.state.semester)
-                bodyFormData.append('student', JSON.stringify(this.state.student))
-                bodyFormData.append('course', JSON.stringify(this.state.course))
-                bodyFormData.append('assignment', JSON.stringify(this.state.assignment))
-                bodyFormData.append('scope', this.state.scope)
-                bodyFormData.append('description', this.state.description)
-                bodyFormData.append('industryLink', this.state.industryLink)
-                bodyFormData.append('application', this.state.application)
-                for (const key of Object.keys(this.state.selectedFile)) {
-                    bodyFormData.append('projectImage', this.state.selectedFile[key], this.state.selectedFile[key].name)
-                }
-                console.log(bodyFormData)
-                const token = this.context.token
-                axios({
-                    method: 'put',
-                    url: url,
-                    data: bodyFormData,
-                    headers: { 'Content-Type': 'multipart/form-data', 'Authorization': 'Bearer ' + token }
-                })
-                    .then(function (response) {
-                        //handle success
-                        console.log(response);
-                    })
-    
-                    .then(json => this.fetchData())
-                    .then(() => alert('Project Updated'))
-                    .catch(function (response) {
-                        //handle error
-                        console.log(response);
-                    });
+        if (this.state.addNew === true) {
+            var bodyFormData = new FormData();
+            bodyFormData.append('technology', this.state.technology)
+            bodyFormData.append('projectID', this.state.projectID)
+            bodyFormData.append('projectName', this.state.projectName)
+            bodyFormData.append('semester', this.state.semester)
+            bodyFormData.append('student', JSON.stringify(this.state.student))
+            bodyFormData.append('course', JSON.stringify(this.state.course))
+            bodyFormData.append('assignment', JSON.stringify(this.state.assignment))
+            bodyFormData.append('scope', this.state.scope)
+            bodyFormData.append('description', this.state.description)
+            bodyFormData.append('industryLink', this.state.industryLink)
+            bodyFormData.append('application', this.state.application)
+            for (const key of Object.keys(this.state.selectedFile)) {
+                bodyFormData.append('projectImage', this.state.selectedFile[key], this.state.selectedFile[key].name)
             }
+            const token = this.context.token
+            axios({
+                method: 'post',
+                url: url,
+                data: bodyFormData,
+                headers: { 'Content-Type': 'multipart/form-data', 'Authorization': 'Bearer ' + token }
+            })
+                .then(function (response) {
+                    //handle success
+                    console.log(response);
+                })
+
+                .then(json => this.fetchData())
+                .then(() => alert('Project Added'))
+                .catch(function (response) {
+                    //handle error
+                    console.log(response);
+                });
+        } else {
+            var bodyFormData = new FormData();
+            bodyFormData.append('_id', this.state._id)
+            bodyFormData.append('technology', this.state.technology)
+            bodyFormData.append('projectID', this.state.projectID)
+            bodyFormData.append('projectName', this.state.projectName)
+            bodyFormData.append('semester', this.state.semester)
+            bodyFormData.append('student', JSON.stringify(this.state.student))
+            bodyFormData.append('course', JSON.stringify(this.state.course))
+            bodyFormData.append('assignment', JSON.stringify(this.state.assignment))
+            bodyFormData.append('scope', this.state.scope)
+            bodyFormData.append('description', this.state.description)
+            bodyFormData.append('industryLink', this.state.industryLink)
+            bodyFormData.append('application', this.state.application)
+            for (const key of Object.keys(this.state.selectedFile)) {
+                bodyFormData.append('projectImage', this.state.selectedFile[key], this.state.selectedFile[key].name)
+            }
+            console.log(bodyFormData)
+            const token = this.context.token
+            axios({
+                method: 'put',
+                url: url,
+                data: bodyFormData,
+                headers: { 'Content-Type': 'multipart/form-data', 'Authorization': 'Bearer ' + token }
+            })
+                .then(function (response) {
+                    //handle success
+                    console.log(response);
+                })
+
+                .then(json => this.fetchData())
+                .then(() => alert('Project Updated'))
+                .catch(function (response) {
+                    //handle error
+                    console.log(response);
+                });
         }
-        
     }
 
     delete(id) {
@@ -237,6 +193,23 @@ export default class NewProject extends Component {
     }
 
     render() {
+        const isEnabled = this.state.projectID.length > 0
+            && this.state.technology.length > 0
+            && this.state.projectName.length > 0
+            && this.state.semester.length > 0
+            && this.state.student.map(s => s.studentName.length) > 0
+            && this.state.student.map(s => s.studentID.length) > 0
+            && this.state.student.map(s => s.studentYear.length) > 0
+            && this.state.course.map(s => s.courseID.length) > 0
+            && this.state.course.map(s => s.courseName.length) > 0
+            && this.state.assignment.map(s => s.assignmentName.length) > 0
+            && this.state.assignment.map(s => s.assignmentDescription.length) > 0
+            && this.state.assignment.map(s => s.assignmentPercentage.length) > 0
+            && this.state.scope.length > 0
+            && this.state.industryLink.length > 0
+            && this.state.application.length > 0
+            && this.state.description.length > 0
+            && this.state.selectedFile.length > 0
         return (
             <div>
                 <div className="jumbotron py-4 jumbotron-cover-image">
@@ -267,21 +240,21 @@ export default class NewProject extends Component {
                         <div className="col-md-5">
                             <div className="container-fluid">
                                 <form>
-                                    <p style={{ color: 'red' }}><em>*Fill all the (*) information to save project</em></p>
+                                    <p style={{ color: 'red' }}><em>*Fill all the information to enable "Save" button</em></p>
                                     <div className="form-group">
-                                        <label htmlFor="projectID">Project ID*</label>
+                                        <label htmlFor="projectID">Project ID</label>
                                         <input type="text" className="form-control" id="projectID" name='projectID' value={this.state.projectID} placeholder="Enter Project ID" onChange={this.handleChange.bind(this)} required />
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="projectName">Project Name*</label>
+                                        <label htmlFor="projectName">Project Name</label>
                                         <input type="text" className="form-control" id="projectName" name='projectName' value={this.state.projectName} placeholder="Enter Project Name" onChange={this.handleChange.bind(this)} required />
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="technology">Technologies*</label>
+                                        <label htmlFor="technology">Technologies</label>
                                         <input type="text" className="form-control" id="technology" name='technology' value={this.state.technology} placeholder="Enter Technologies Used" onChange={this.handleChange.bind(this)} required />
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="semester">Semester*</label>
+                                        <label htmlFor="semester">Semester</label>
                                         <input type="text" className="form-control" id="semester" name='semester' value={this.state.semester} placeholder="Enter Semester" onChange={this.handleChange.bind(this)} required />
                                     </div>
                                     <div className="form-group">
@@ -297,7 +270,7 @@ export default class NewProject extends Component {
                                                         }
                                                         <div className="row">
                                                             <div className="col-md-4">
-                                                                <label htmlFor={studentID}>ID*</label>
+                                                                <label htmlFor={studentID}>ID</label>
                                                                 <input
                                                                     type="text"
                                                                     name="studentID"
@@ -310,7 +283,7 @@ export default class NewProject extends Component {
                                                                 />
                                                             </div>
                                                             <div className="col-md-4">
-                                                                <label htmlFor={studentName}>Name*</label>
+                                                                <label htmlFor={studentName}>Name</label>
                                                                 <input
                                                                     type="text"
                                                                     name="studentName"
@@ -323,7 +296,7 @@ export default class NewProject extends Component {
                                                                 />
                                                             </div>
                                                             <div className="col-md-4">
-                                                                <label htmlFor={studentYear}>Year*</label>
+                                                                <label htmlFor={studentYear}>Year</label>
                                                                 <input
                                                                     type="number"
                                                                     name="studentYear"
@@ -352,7 +325,7 @@ export default class NewProject extends Component {
                                                     <div key={idx}>
                                                         <div className="row">
                                                             <div className="col-md-6" >
-                                                                <label htmlFor={courseID}>Course ID*</label>
+                                                                <label htmlFor={courseID}>Course ID</label>
                                                                 <div data-tip="Enter Course ID">
                                                                     <input
                                                                         type="text"
@@ -368,7 +341,7 @@ export default class NewProject extends Component {
 
                                                             </div>
                                                             <div className="col-md-6">
-                                                                <label htmlFor={courseName}>Name*</label>
+                                                                <label htmlFor={courseName}>Name</label>
                                                                 <input
                                                                     placeholder="Enter Course Name"
                                                                     type="text"
@@ -393,7 +366,7 @@ export default class NewProject extends Component {
                                                 let assignmentName = `assignmentName-${idx}`, assignmentDescription = `assignmentDescription-${idx}`, assignmentPercentage = `assignmentPercentage-${idx}`
                                                 return (
                                                     <div key={idx}>
-                                                        <label htmlFor={assignmentName}> Name*</label>
+                                                        <label htmlFor={assignmentName}> Name</label>
                                                         <input
                                                             type="text"
                                                             name="assignmentName"
@@ -404,7 +377,7 @@ export default class NewProject extends Component {
                                                             className="form-control"
                                                             onChange={this.handleChange.bind(this)}
                                                         />
-                                                        <label htmlFor={assignmentDescription}>Description*</label>
+                                                        <label htmlFor={assignmentDescription}>Description</label>
                                                         <textarea
                                                             type="text"
                                                             name="assignmentDescription"
@@ -415,7 +388,7 @@ export default class NewProject extends Component {
                                                             className="form-control"
                                                             onChange={this.handleChange.bind(this)}
                                                         />
-                                                        <label htmlFor={assignmentPercentage}>Percentage*</label>
+                                                        <label htmlFor={assignmentPercentage}>Percentage</label>
                                                         <input
                                                             type="number"
                                                             name="assignmentPercentage"
@@ -432,11 +405,11 @@ export default class NewProject extends Component {
                                         }
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="scope">Scope*</label>
+                                        <label htmlFor="scope">Scope</label>
                                         <textarea type="text" className="form-control" id="scope" name='scope' value={this.state.scope} placeholder="Enter Project Scope" onChange={this.handleChange.bind(this)} required />
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="description">Description*</label>
+                                        <label htmlFor="description">Description</label>
                                         <textarea type="text" className="form-control" id="description" name='description' value={this.state.description} placeholder="Enter Project Description" onChange={this.handleChange.bind(this)} required />
                                     </div>
                                     <div className="form-group">
@@ -447,11 +420,11 @@ export default class NewProject extends Component {
                                         <label htmlFor="application">Application</label>
                                         <textarea type="text" className="form-control" id="application" name='application' value={this.state.application} placeholder="Enter Application" onChange={this.handleChange.bind(this)} required />
                                     </div>
-                                    <label htmlFor="projectImage">Image*</label>
-                                    <br/><input type="file" name="file" onChange={this.fileSelectedHandler.bind(this)} multiple />
+
+                                    <input type="file" name="file" onChange={this.fileSelectedHandler.bind(this)} multiple />
                                 </form>
                                 <br />
-                                <button className="btn btn-primary" onClick={this.save.bind(this)}>Save</button>  &nbsp; &nbsp;
+                                <button className="btn btn-primary" onClick={this.save.bind(this)} active={isEnabled} disabled={!isEnabled}>Save</button>  &nbsp; &nbsp;
                                     <button className="btn btn-success" onClick={this.add.bind(this)}>Reset</button>
                                 <br />
                             </div>
