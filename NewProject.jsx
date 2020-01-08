@@ -193,13 +193,14 @@ export default class NewProject extends Component {
     }
 
     render() {
+        const isNotEmpty = (currentValue) => currentValue > 0;
         const isEnabled = this.state.projectID.length > 0
             && this.state.technology.length > 0
             && this.state.projectName.length > 0
             && this.state.semester.length > 0
-            && this.state.student.map(s => s.studentName.length) > 0
-            && this.state.student.map(s => s.studentID.length) > 0
-            && this.state.student.map(s => s.studentYear.length) > 0
+            && this.state.student.map(s => s.studentName.length).every(isNotEmpty)
+            && this.state.student.map(s => s.studentID.length).every(isNotEmpty)
+            && this.state.student.map(s => s.studentYear.length).every(isNotEmpty)
             && this.state.course.map(s => s.courseID.length) > 0
             && this.state.course.map(s => s.courseName.length) > 0
             && this.state.assignment.map(s => s.assignmentName.length) > 0
@@ -210,6 +211,7 @@ export default class NewProject extends Component {
             && this.state.application.length > 0
             && this.state.description.length > 0
             && this.state.selectedFile.length > 0
+        console.log(isEnabled)
         return (
             <div>
                 <div className="jumbotron py-4 jumbotron-cover-image">
