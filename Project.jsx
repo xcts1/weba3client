@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Detail from './Detail.jsx'
+import Pagination from "react-js-pagination";
 const url = 'http://13.229.31.156/projects/'
 const url1 = 'http://13.229.31.156/'
 
@@ -29,6 +30,8 @@ export default class Project extends Component {
             industryLink: "",
             application: "",
             sort: 'asc',
+            activePage: 1,
+            itemPerPage: 6,
             students: [{ studentID: "", studentName: "", studentYear: "" }],
             courses: [{ courseID: "", courseName: "" }]
         }
@@ -36,6 +39,9 @@ export default class Project extends Component {
     }
     searchHandler(event) {
         this.setState({ term: event.target.value })
+    }
+    handlePageChange(pageNumber) {
+        this.setState({ activePage: pageNumber });
     }
 
     fetchData() {
@@ -107,7 +113,8 @@ export default class Project extends Component {
     render() {
         let unique = [...new Set(this.state.tempt_projects.map(s => s.semester))];
         // let unique1 = [...new Set(this.state.tempt_projects.map(s => s.course.map(s => s.courseID)))];
-
+        var indexOfLast = this.state.activePage * this.state.itemPerPage;
+        var indexOfFirst = indexOfLast - this.state.itemPerPage;
         const unique1 = []
         const renderList = this.state.tempt_projects.map(s => {
             s.course.map(s => {
@@ -205,7 +212,7 @@ export default class Project extends Component {
                         </div>
                         <div className="col-lg-10">
                             <div className="row">
-                                {this.state.projects.filter(searchingFor(this.state.term)).map((s, index) =>
+                                {this.state.projects.filter(searchingFor(this.state.term)).slice(indexOfFirst, indexOfLast).map((s, index) =>
                                     <div className="col-lg-4 col-sm-6 d-flex" style={{width: 100 }}>
                                         <div className="card my-2">
                                             <div className="card-body">
@@ -225,6 +232,16 @@ export default class Project extends Component {
                                     </div>
                                 )}
                             </div>
+                            <div>
+                            <Pagination
+                                activePage={this.state.activePage}
+                                itemsCountPerPage={this.state.itemPerPage}
+                                totalItemsCount={this.state.projects.length}
+                                pageRangeDisplayed={10}
+                                onChange={this.handlePageChange.bind(this)}
+                                itemClass="page-item"
+                                linkClass="page-link" />
+                        </div>
                         </div>
                     </div>
                 </div>
