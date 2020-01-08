@@ -8,6 +8,7 @@ import Users from './Users.jsx'
 import Auth from './Auth.jsx'
 import AuthContext from './auth-context.js'
 import ChangePassword from './ChangePassword.jsx'
+import Footer from './Footer.js'
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 
 export default class App extends React.Component {
@@ -48,8 +49,9 @@ export default class App extends React.Component {
 							{this.state.token && <Route path="/users" component={Users} />}
 							<Route path={""} component={Detail} />
 						</Switch>
+						<br/>
+						<Footer />
 					</AuthContext.Provider>
-					<br />
 				</React.Fragment>
 			</Router>
 		);

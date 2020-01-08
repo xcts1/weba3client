@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import Detail from './Detail.jsx'
+
 import Pagination from "react-js-pagination";
 const url = 'http://13.229.31.156/projects/'
 const url1 = 'http://13.229.31.156/'
@@ -213,38 +213,39 @@ export default class Project extends Component {
                         <div className="col-lg-10">
                             <div className="row">
                                 {this.state.projects.filter(searchingFor(this.state.term)).slice(indexOfFirst, indexOfLast).map((s, index) =>
-                                    <div className="col-lg-4 col-sm-6 d-flex" style={{width: 100 }}>
+                                    <div className="col-lg-4 col-sm-6 d-flex" style={{ width: 100 }}>
                                         <div className="card my-2">
                                             <div className="card-body">
-                                                    <h5 className="card-title">{s.projectID}: {s.projectName}</h5>
-                                                    <h6 className="card-subtitle mb-2 text-muted">{s.course.map(s => s.courseName)}</h6>
-                                                    <div className="card-text">
-                                                        {s.description} <br /> <br />
-                                                        <em> <strong>Technology used:</strong> {s.technology}</em></div>
-                                                        
-                                                </div>
-                                                <div className = "card-body">
+                                                <h5 className="card-title">{s.projectID}: {s.projectName}</h5>
+                                                <h6 className="card-subtitle mb-2 text-muted">{s.course.map(s => s.courseName)}</h6>
+                                                <div className="card-text">
+                                                    {s.description} <br /> <br />
+                                                    <em> <strong>Technology used:</strong> {s.technology}</em></div>
+
+                                            </div>
+                                            <div className="card-body">
                                                 <Link to={`${s.projectID}`}>
-                                                        <button className="btn btn-primary ">View Detail</button>
-                                                    </Link>
-                                                </div>
+                                                    <button className="btn btn-primary ">View Detail</button>
+                                                </Link>
+                                            </div>
                                         </div>
                                     </div>
                                 )}
                             </div>
                             <div>
-                            <Pagination
-                                activePage={this.state.activePage}
-                                itemsCountPerPage={this.state.itemPerPage}
-                                totalItemsCount={this.state.projects.length}
-                                pageRangeDisplayed={10}
-                                onChange={this.handlePageChange.bind(this)}
-                                itemClass="page-item"
-                                linkClass="page-link" />
-                        </div>
+                                <Pagination
+                                    activePage={this.state.activePage}
+                                    itemsCountPerPage={this.state.itemPerPage}
+                                    totalItemsCount={this.state.projects.length}
+                                    pageRangeDisplayed={10}
+                                    onChange={this.handlePageChange.bind(this)}
+                                    itemClass="page-item"
+                                    linkClass="page-link" /> <br/>
+                            </div>
                         </div>
                     </div>
                 </div>
+                
             </div>
         )
     }
