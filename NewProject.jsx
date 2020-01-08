@@ -30,7 +30,8 @@ export default class NewProject extends Component {
             course: [{ courseID: "", courseName: "" }],
             addNew: true,
             selectedFile: [],
-            projectImage: ""
+            projectImage: "",
+            message: ""
         }
         this.searchHandler = this.searchHandler.bind(this);
     }
@@ -187,7 +188,21 @@ export default class NewProject extends Component {
     }
 
     fileSelectedHandler(e) {
-        this.setState({ selectedFile: e.target.files })
+        let file_size = e.target.files[0].size;
+        {console.log('Size ' + file_size)}
+        if(file_size > 50e6){
+            this.setState({message: "File size limits 50MB"})
+            this.setState({ selectedFile: []})
+            {console.log("message: " + this.state.message)}
+            return;
+        } 
+        else{
+            this.setState({ selectedFile: e.target.files })
+            this.setState({message: " "})
+            {console.log("message: " + this.state.message)}
+        }
+        
+        
     }
 
     render() {
@@ -423,7 +438,8 @@ export default class NewProject extends Component {
                                         <textarea type="text" className="form-control" id="application" name='application' value={this.state.application} placeholder="Enter Application" onChange={this.handleChange.bind(this)} required />
                                     </div>
                                     <label htmlFor="projectImage">Images and Videos</label> <br/>
-                                    <input type="file" name="file" onChange={this.fileSelectedHandler.bind(this)} multiple />
+                                    <input type="file" name="file" onChange={this.fileSelectedHandler.bind(this)} multiple title="File size limits 50MB"/>   
+                                    <h5 style={{color:'red', fontSize: 15+'px'}}>{this.state.message}</h5>
                                 </form>
                                 <br />
                                 <button className="btn btn-primary" onClick={this.save.bind(this)} disabled={!isEnabled}>Save</button>  &nbsp; &nbsp;

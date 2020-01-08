@@ -245,7 +245,6 @@ export default class Project extends Component {
                         </div>
                     </div>
                 </div>
-                
             </div>
         )
     }
