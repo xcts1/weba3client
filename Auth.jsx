@@ -7,7 +7,7 @@ export default class Auth extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            message: ""
+            message: "",
         }
         this.usernameEl = React.createRef()
         this.passwordEl = React.createRef()
