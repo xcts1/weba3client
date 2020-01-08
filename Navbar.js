@@ -7,7 +7,13 @@ const Navbar = props => (
         {(context) => {
             return (
                 <nav className="navbar navbar-expand-sm navbar-dark px-sm-5" style={{ backgroundColor: 'rgb(0, 0, 83)' }}>
-                    <Link to='/' className="navbar-brand">Home</Link>
+                    <Link to='/' className="navbar-brand">
+                    <img
+						src='./logo2.png'
+						alt="logo"
+						style={{ height: 40 + 'px' }}
+					/>
+                    </Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-list-2" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
