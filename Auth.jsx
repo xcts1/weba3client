@@ -6,6 +6,9 @@ export default class Auth extends Component {
 
     constructor(props) {
         super(props)
+        this.state = {
+            message: ""
+        }
         this.usernameEl = React.createRef()
         this.passwordEl = React.createRef()
     }
@@ -38,7 +41,7 @@ export default class Auth extends Component {
             .then(res => {
                 if (res.status !== 200 && res.status !== 201) {
                     throw new Error('Failed!'),
-                    alert("Wrong username or password")
+                    this.setState({message: "Wrong username or password"})
                 }
                 return res.json()
             })
@@ -64,6 +67,7 @@ export default class Auth extends Component {
                         <br />
                         <input type="text" className="rounded-pill" name="username" id="username" ref={this.usernameEl} placeholder="Enter username" />
                         <input type="password" className="rounded-pill" name="password" id="password" ref={this.passwordEl} placeholder="Enter password" />
+                        <h5 style={{color: 'red', fontSize: 15 + 'px'}}>{this.state.message}</h5>
                         <button type='submit' className="rounded-pill btn-block z-depth-0 my-4 waves-effect" style={{ backgroundColor: 'rgb(202, 0, 0)' }}>Sign in</button>
                     </form>
                 </div>
