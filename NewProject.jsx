@@ -189,20 +189,25 @@ export default class NewProject extends Component {
 
     fileSelectedHandler(e) {
         let file_size = e.target.files[0].size;
+        let file_type = e.target.files[0].type;
         {console.log('Size ' + file_size)}
+        {console.log('Type: ' + file_type)}
         if(file_size > 50e6){
             this.setState({message: "File size limits 50MB"})
             this.setState({ selectedFile: []})
             {console.log("message: " + this.state.message)}
             return;
         } 
+        else if (!(file_type.includes('video') || file_type.includes('image'))){
+            this.setState({message: "File type is not valid"})
+            this.setState({ selectedFile: []})
+            return;
+        }
         else{
             this.setState({ selectedFile: e.target.files })
             this.setState({message: " "})
             {console.log("message: " + this.state.message)}
         }
-        
-        
     }
 
     render() {
