@@ -90,7 +90,7 @@ export default class Detail extends Component {
                                                             <div >
                                                                 <a href={url1.concat(s)} data-lightbox="photos"
                                                                 >
-                                                                    <img src={url1.concat(s)} className="img-thumbnail hover-shadow" ></img></a>
+                                                                    <img src={url1.concat(s)} className="thumbnail-img hover-shadow border border-secondary rounded" ></img></a>
                                                             </div>
                                                             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
                                                             <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
