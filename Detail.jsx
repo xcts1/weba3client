@@ -50,7 +50,11 @@ export default class Detail extends Component {
                                 <div className="row">
                                     <div className="col-lg-6">
                                         <strong style={{ textDecoration: 'underline' }}>Students:</strong> <br />
-                                        <strong>Name: </strong>{s.student.map(s => s.studentName)} - <strong>ID: </strong>{s.student.map(s => s.studentID)} - <strong>Year: </strong>{s.student.map(s => s.studentYear)} <br />
+                                        {s.student.map(s=>
+                                            <div>
+                                                <strong>Name: </strong>{s.studentName} - <strong>ID: </strong>{s.studentID} - <strong>Year: </strong>{s.studentYear} <br />
+                                            </div>)}
+                                        
                                     </div>
                                     <div className="col-lg-6">
                                         <strong style={{ textDecoration: 'underline' }}>Course:</strong> {s.course.map(s => s.courseID)}-{s.course.map(s => s.courseName)}
