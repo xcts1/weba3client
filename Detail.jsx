@@ -50,11 +50,11 @@ export default class Detail extends Component {
                                 <div className="row">
                                     <div className="col-lg-6">
                                         <strong style={{ textDecoration: 'underline' }}>Students:</strong> <br />
-                                        {s.student.map(s=>
+                                        {s.student.map(s =>
                                             <div>
                                                 <strong>Name: </strong>{s.studentName} - <strong>ID: </strong>{s.studentID} - <strong>Year: </strong>{s.studentYear} <br />
                                             </div>)}
-                                        
+
                                     </div>
                                     <div className="col-lg-6">
                                         <strong style={{ textDecoration: 'underline' }}>Course:</strong> {s.course.map(s => s.courseID)}-{s.course.map(s => s.courseName)}
@@ -88,9 +88,13 @@ export default class Detail extends Component {
                                                         :
                                                         <div>
                                                             <div >
-                                                                <img src={url1.concat(s)} className="img-thumbnail hover-shadow" ></img>
+                                                                <a href={url1.concat(s)} data-lightbox="photos"
+                                                                >
+                                                                    <img src={url1.concat(s)} className="img-thumbnail hover-shadow" ></img></a>
                                                             </div>
-                                                        </div> 
+                                                            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                                                            <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
+                                                        </div>
                                                 }
                                             </div>
                                         </div>)}
